@@ -1,3 +1,8 @@
+# Get started
+- run *npm install*, *npm start*
+- run json-server: *json-server --watch -p 3001 ./src/server/db.json*
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
