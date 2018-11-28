@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Etape2.css';
 
 class Etape2 extends Component {
 
@@ -24,9 +25,10 @@ class Etape2 extends Component {
 
   render() {
     return (
-      <div className="wrapper-etape-1">
-      <h2>Étape 2 : </h2>
-        <div className="wrapper-input-radio">
+      <div className="wrapper-etape-2">
+      <h2>Étape 2 : Framework favoris</h2>
+      <form onSubmit={this.submitForm}>
+      <div className="wrapper-input-radio">
           <label>
             AngularJS
             <input type="radio" name="AngularJS" value="AngularJS" checked={this.state.framework === "AngularJS"} onChange={this.handleChange} />
@@ -43,15 +45,16 @@ class Etape2 extends Component {
           </label>
         </div>
 
-        <div>
+        <div className="wrapper-textarea">
           <label>
             Autre :
-            <textarea onChange={this.handleChange} />
+            <textarea name="autre" onChange={this.handleChange} />
           </label>
         </div>
         
-        <button className="button-back" onClick={this.backForm} >Retour</button>
-        <button className="button-next" onClick={this.submitForm} >Suivant</button>
+        <button className="button button-back" onClick={this.backForm}>Retour</button>
+        <button className="button button-next">Suivant</button>
+      </form>
       </div>
     );
   }

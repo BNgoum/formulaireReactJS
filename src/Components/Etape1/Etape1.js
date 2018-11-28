@@ -16,7 +16,7 @@ class Etape1 extends Component {
     return (
       <div className="wrapper-etape-1">
         <h2>Étape 1 : Vos informations</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.submitForm}>
           <div className="wrapper-input-select">
             <label>
               Civilité
@@ -47,7 +47,7 @@ class Etape1 extends Component {
             </label>
           </div>
 
-          <button type="submit" className="button-next" onClick={this.submitForm}>Valider</button>
+          <button type="submit" className="button button-next">Valider</button>
         </form>
       </div>
     );

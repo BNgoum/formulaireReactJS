@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class Etape3 extends Component {
 
     backForm = () => {
@@ -36,7 +37,7 @@ class Etape3 extends Component {
     render() {
         return(
             <div>
-                <h2>Etape 3 !</h2>
+                <h2>Etape 3</h2>
 
                 <div>
                     <p>Civilité : { this.props.civilite }</p>
@@ -47,9 +48,9 @@ class Etape3 extends Component {
                     <p>Framework favoris : { this.props.framework }</p>
                 </div>
 
-                <button className="" onClick={this.backForm} >Retour</button>
-                <button className="" onClick={this.cancelForm} >Annuler</button>
-                <button className="" onClick={this.saveForm} >Enregistrer</button>
+                <button className="button button-back" onClick={this.backForm} >Retour</button>
+                <button className="button" onClick={this.cancelForm} >Annuler</button>
+                <button className="button" onClick={this.saveForm} >Enregistrer</button>
             </div>
         )
     }

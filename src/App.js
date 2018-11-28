@@ -47,6 +47,9 @@ class App extends Component {
       case 'Symfony':
       this.setState({ framework: value })
       break;
+      case 'autre':
+      this.setState({ framework: value })
+      break;
       default:
         console.log('La saisie ne correspond à aucun champs.')
     }
