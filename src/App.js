@@ -4,6 +4,8 @@ import Etape1 from './Components/Etape1/Etape1'
 import Etape2 from './Components/Etape2/Etape2'
 import Etape3 from './Components/Etape3/Etape3'
 
+import './App.css'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,67 +21,58 @@ class App extends Component {
     }
   }
 
-  handleChangeCivilite = (civiliteSaisie) => {
-    this.setState({
-      civilite: civiliteSaisie
-    })
+  handleSaisie = (key, value) => {
+    switch (key) {
+      case 'civilite':
+      this.setState({ civilite: value })
+      break;
+      case 'prenom':
+      this.setState({ prenom: value })
+      break;
+      case 'nom':
+      this.setState({ nom: value })
+      break;
+      case 'email':
+      this.setState({ email: value })
+      break;
+      case 'telephone':
+      this.setState({ tel: value })
+      break;
+      case 'AngularJS':
+      this.setState({ framework: value })
+      break;
+      case 'VueJS':
+      this.setState({ framework: value })
+      break;
+      case 'Symfony':
+      this.setState({ framework: value })
+      break;
+      default:
+        console.log('La saisie ne correspond à aucun champs.')
+    }
   }
 
-  handleChangeLastName = (nameSaisie) => {
-    this.setState({
-      nom: nameSaisie
-    })
+  handleNavigate = (type, step) => {
+    if ( type === "next") {
+      if ( step === "etape1") { this.setState({etape1: false, etape2: true}) }
+      else { this.setState({etape2: false, etape3: true}) }
+    }
+    else {
+      if ( step === "etape2") { this.setState({etape1: true, etape2: false}) }
+      else { this.setState({etape2: true, etape3: false}) }
+    }
   }
-
-  handleChangeFirstName = (nameSaisie) => {
+  
+  handleCancelForm = (stateStep3) => {
     this.setState({
-      prenom: nameSaisie
-    })
-  }
-
-  handleChangeEmail = (emailSaisie) => {
-    this.setState({
-      email: emailSaisie
-    })
-  }
-
-  handleChangeNumeroTelephone = (telephoneSaisie) => {
-    this.setState({
-      tel: telephoneSaisie
-    })
-  }
-
-  handleValidateFormStep1 = (response) => {
-    this.setState({
-      etape1: response,
-      etape2: true
-    })
-  }
-
-  handleValidateFormStep2 = (response) => {
-    this.setState({
-      etape2: response,
-      etape3: true
-    })
-  }
-
-  handleChangeFramework = (frameworkSaisie) => {
-    this.setState({
-      framework: frameworkSaisie
-    })
-  }
-
-  handleBackToStep1 = (stateStep1) => {
-    this.setState({
-      etape1: stateStep1,
-      etape2: false
-    })
-  }
-
-  handleBackToStep2 = (stateStep2) => {
-    this.setState({
-      etape2: stateStep2,
-      etape3: false
+      etape3: stateStep3,
+      etape1: true,
+      civilite: "Monsieur",
+      prenom: "",
+      nom: "",
+      email: "",
+      tel: "",
+      framework: ""
     })
   }
 
@@ -91,12 +84,8 @@ class App extends Component {
         { this.state.etape1 
           ? 
             <Etape1
-              getCivilite={this.handleChangeCivilite} 
-              getFirstName={this.handleChangeFirstName} 
-              getLastName={this.handleChangeLastName} 
-              getEmail={this.handleChangeEmail} 
-              getNumeroTelephone={this.handleChangeNumeroTelephone}
-              validateForm={this.handleValidateFormStep1}
+              getSaisieUser={this.handleSaisie} 
+              validateForm={this.handleNavigate}
             />
           :
             null
@@ -105,7 +94,11 @@ class App extends Component {
         {
           this.state.etape2 
           ?
-            <Etape2 getFramework={this.handleChangeFramework} validateForm={this.handleValidateFormStep2} backForm={this.handleBackToStep1}/>
+            <Etape2 
+              getSaisieUser={this.handleSaisie} 
+              validateForm={this.handleNavigate}
+              backForm={this.handleNavigate}
+            />
           :
             null
         }
@@ -114,13 +107,14 @@ class App extends Component {
           this.state.etape3
           ?
             <Etape3 
-              backForm={this.handleBackToStep2}
+              backForm={this.handleNavigate}
               civilite={this.state.civilite}
               nom={this.state.nom}
               prenom={this.state.prenom}
               email={this.state.email}
               tel={this.state.tel}
               framework={this.state.framework}
+              cancelForm={this.handleCancelForm}
             />
           :
             null

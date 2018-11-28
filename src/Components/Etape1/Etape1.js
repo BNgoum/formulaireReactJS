@@ -1,77 +1,54 @@
 import React, { Component } from 'react';
 
+import './Etape1.css'
+
 class Etape1 extends Component {
 
-  handleChangeCivilite = (e) => {
-    let civilite = e.target.value;
-    this.props.getCivilite(civilite);
-  }
-
-  handleChangeFirstName = (e) => {
-    let firstName = e.target.value;
-    this.props.getFirstName(firstName);
-  }
-
-  handleChangeLastName = (e) => {
-    let lastName = e.target.value;
-    this.props.getLastName(lastName);
-  }
-
-  handleChangeEmail = (e) => {
-    let email = e.target.value;
-    this.props.getEmail(email);
-  }
-
-  handleChangeTelephone = (e) => {
-    let telephone = e.target.value;
-    this.props.getNumeroTelephone(telephone);
+  handleChange = (e) => {
+    this.props.getSaisieUser(e.target.name, e.target.value);
   }
 
   submitForm = () => {
-    this.props.validateForm(false);
+    this.props.validateForm('next', 'etape1');
   }
 
   render() {
     return (
       <div className="wrapper-etape-1">
-        <h2>Étape 1 : </h2>
-        <div className="wrapper-input-select">
-          <label>
-            Civilité
-            <select onChange={this.handleChangeCivilite}>
-              <option value="Monsieur">Monsieur</option>
-              <option value="Madame">Madame</option>
-            </select>
-          </label>
-        </div>
-        
-        <div className="wrapper-input-text">
-          <label>
-            Prenom
-            <input type="text" name="Prenom" onChange={this.handleChangeFirstName} />
-          </label>
+        <h2>Étape 1 : Vos informations</h2>
+        <form onSubmit={this.handleSubmit}>
+          <div className="wrapper-input-select">
+            <label>
+              Civilité
+              <select name="civilite" onChange={this.handleChange}>
+                <option value="Monsieur">Monsieur</option>
+                <option value="Madame">Madame</option>
+              </select>
+            </label>
+          </div>
+          
+          <div className="wrapper-input-text">
+            <label>
+              <input type="text" name="prenom" placeholder="Saisissez votre prénom..." onChange={this.handleChange} />
+            </label>
 
-          <label>
-            Nom
-            <input type="text" name="Nom" onChange={this.handleChangeLastName} />
-          </label>
-        </div>
+            <label>
+              <input type="text" name="nom" placeholder="Saisissez votre nom..." onChange={this.handleChange} />
+            </label>
+          </div>
 
-        <div className="wrapper-input-email">
-          <label>
-            Email
-            <input type="email" name="email" onChange={this.handleChangeEmail} />
-          </label>
-        </div>
+          <div className="wrapper-input-email-number">
+            <label>
+              <input type="email" name="email" placeholder="Saisissez votre email..." onChange={this.handleChange} />
+            </label>
 
-        <div className="wrapper-input-telephone">
-          <label>
-            Numéro de téléphone
-            <input type="number" name="telephone" onChange={this.handleChangeTelephone} />
-          </label>
-        </div>
+            <label>
+              <input type="number" name="telephone" placeholder="Saisissez votre n° de téléphone..." onChange={this.handleChange} />
+            </label>
+          </div>
 
-        <button className="button-next" onClick={this.submitForm}>Suivant</button>
+          <button type="submit" className="button-next" onClick={this.submitForm}>Valider</button>
+        </form>
       </div>
     );
   }

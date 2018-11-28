@@ -3,7 +3,11 @@ import React, { Component } from 'react';
 class Etape3 extends Component {
 
     backForm = () => {
-        this.props.backForm(true);
+        this.props.backForm('back', 'etape3');
+    }
+    
+    cancelForm = () => {
+        this.props.cancelForm(false);
     }
 
     saveForm = () => {
@@ -44,7 +48,7 @@ class Etape3 extends Component {
                 </div>
 
                 <button className="" onClick={this.backForm} >Retour</button>
-                <button className="" onClick={this.submitForm} >Annuler</button>
+                <button className="" onClick={this.cancelForm} >Annuler</button>
                 <button className="" onClick={this.saveForm} >Enregistrer</button>
             </div>
         )

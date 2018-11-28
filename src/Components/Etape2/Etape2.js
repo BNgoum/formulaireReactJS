@@ -10,19 +10,16 @@ class Etape2 extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({
-      framework: e.target.value
-    })
-
-    this.props.getFramework(e.target.value)
+    this.props.getSaisieUser(e.target.name, e.target.value)
+    this.setState({framework: e.target.value})
   }
 
   submitForm = () => {
-    this.props.validateForm(false);
+    this.props.validateForm('next', 'etape2');
   }
 
   backForm = () => {
-    this.props.backForm(true);
+    this.props.backForm('back', 'etape2');
   }
 
   render() {
