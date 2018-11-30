@@ -6,17 +6,23 @@ class Etape2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      framework: "",
+      framework: this.props.stateApp.framework,
+      isInputFill: true,
     }
   }
 
   handleChange = (e) => {
     this.props.getSaisieUser(e.target.name, e.target.value)
-    this.setState({framework: e.target.value})
+    this.setState({framework: e.target.value, isInputFill: true})
   }
 
-  submitForm = () => {
-    this.props.validateForm('next', 'etape2');
+  submitForm = (e) => {
+    if ( this.state.framework !== "" ) {
+      this.props.validateForm('next', 'etape2');
+    } else {
+      e.preventDefault();
+      this.setState({ isInputFill: false })
+    }
   }
 
   backForm = () => {
@@ -51,6 +57,14 @@ class Etape2 extends Component {
             <textarea name="autre" onChange={this.handleChange} />
           </label>
         </div>
+
+        { this.state.isInputFill ? 
+            null
+          :
+            <div className="wrapper-msg-error">
+              <p>Tous les champs doivent être remplis.</p>
+            </div>
+          }
         
         <button className="button button-back" onClick={this.backForm}>Retour</button>
         <button className="button button-next">Suivant</button>

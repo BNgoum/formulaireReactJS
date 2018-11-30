@@ -17,7 +17,8 @@ class App extends Component {
       nom: "",
       email: "",
       tel: "",
-      framework: ""
+      framework: "",
+      isInputsFill: false
     }
   }
 
@@ -53,6 +54,8 @@ class App extends Component {
       default:
         console.log('La saisie ne correspond à aucun champs.')
     }
+
+    this.checkInputsFill()
   }
 
   handleNavigate = (type, step) => {
@@ -79,6 +82,16 @@ class App extends Component {
     })
   }
 
+  checkInputsFill = () => {
+    const { nom, prenom, email, tel } = this.state;
+
+    if ( nom === "" || prenom === "" || email === "" || tel === "" ) {
+      this.setState({ isInputsFill: false })
+    } else {
+      this.setState({ isInputsFill: true })
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -89,6 +102,8 @@ class App extends Component {
             <Etape1
               getSaisieUser={this.handleSaisie} 
               validateForm={this.handleNavigate}
+              inputsFill={this.state.isInputsFill}
+              stateApp={this.state}
             />
           :
             null
@@ -101,6 +116,7 @@ class App extends Component {
               getSaisieUser={this.handleSaisie} 
               validateForm={this.handleNavigate}
               backForm={this.handleNavigate}
+              stateApp={this.state}
             />
           :
             null

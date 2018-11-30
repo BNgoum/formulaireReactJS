@@ -1,49 +1,4 @@
 {
   "restitutionFormulaire": [
-    {
-      "civilite": "Madame",
-      "nom": "",
-      "prenom": "",
-      "email": "",
-      "tel": "",
-      "framework": "",
-      "id": 1
-    },
-    {
-      "civilite": "Monsieur",
-      "nom": "NGOUM",
-      "prenom": "Ben",
-      "email": "Benld",
-      "tel": "34444",
-      "framework": "VueJS",
-      "id": 2
-    },
-    {
-      "civilite": "Monsieur",
-      "nom": "sdfsdf",
-      "prenom": "sddsf",
-      "email": "sdfsdf",
-      "tel": "12222",
-      "framework": "VueJS",
-      "id": 3
-    },
-    {
-      "civilite": "Monsieur",
-      "nom": "sdfsdf",
-      "prenom": "sddsf",
-      "email": "sdfsdf",
-      "tel": "12222",
-      "framework": "fhfgh",
-      "id": 4
-    },
-    {
-      "civilite": "Monsieur",
-      "nom": "NGOUM",
-      "prenom": "Bendo",
-      "email": "benjamin.ngoum@gmail.com",
-      "tel": "0627120594",
-      "framework": "VueJS",
-      "id": 5
-    }
   ]
 }

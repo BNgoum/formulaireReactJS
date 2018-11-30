@@ -66,3 +66,14 @@ button:hover {
     color: #233FA5;
     border-color: #233FA5;
 }
+
+.wrapper-msg-error p {
+    margin: 0 0 1rem 0;
+    color: #f10505;
+}
+
+.emailError {
+    margin-bottom: 0;
+    font-size: 0.75rem;
+    color: #f10505;
+}

@@ -37,7 +37,7 @@ class Etape3 extends Component {
     render() {
         return(
             <div>
-                <h2>Etape 3</h2>
+                <h2>Etape 3: Récapitulatif du formulaire</h2>
 
                 <div>
                     <p>Civilité : { this.props.civilite }</p>
